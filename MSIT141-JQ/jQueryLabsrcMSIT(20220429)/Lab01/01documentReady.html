@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01documentReady.html</title>
+    <script>
+        //ready是一個事件，等到DOMTree產生後會執行這個事件
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"></script>
+    <script>
+        //jQuery(document).ready(function () {
+        //    $("h1").css("color", "red");
+        //});
+        //同下
+        $(function () {
+            //下列前面會回傳物件使用方法後 並找出屬性
+            console.log($("h1").css("color", "red").css("color"));
+
+            //下列前面會回傳字串.字串並不能使用方法
+            console.log($("h1").css("color").css("color","red"));
+        });
+
+    </script>
+</head>
+<body>
+
+    <h1>write less,do more</h1>
+    <!--<script src="../js/jquery-3.6.0.min.js"></script>-->
+    
+</body>
+</html>

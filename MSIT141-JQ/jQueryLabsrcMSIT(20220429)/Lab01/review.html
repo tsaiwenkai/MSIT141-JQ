@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1 id="h"><i>this is heading 1</i></h1>
+    <h1 id="h">this is heading 2</h1>
+    <h1 id="h">this is heading 3</h1>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        //JavaScript
+        let hObj = document.getElementById("h");  //object,element
+        console.log(hObj);
+        hObj = document.querySelector("h1");  //element
+        console.log(hObj);
+        hObj = document.querySelector("#h");
+        console.log(hObj);
+        hObjAll = document.querySelectorAll("h1");  //多個物件 NodeList
+        console.log(hObjAll);
+        hObjAll = document.querySelectorAll("#h");
+        console.log(hObjAll);
+        //-------------------------------------------------------
+        //內容
+        let hObjContent = hObj.innerHTML;  //property 解譯標籤
+        console.log(hObjContent);
+        hObjContent = hObj.textContent;//firefox 內容視為純文字
+        console.log(hObjContent);
+        hObjContent = hObj.innerText; //IE8
+        console.log(hObjContent);
+        hObjContent = hObjAll[0].innerHTML;
+        console.log(hObjContent);
+
+
+        //-------------------------------------------------------
+
+        //jQuery
+        //用ID找
+        let hSelector = jQuery("#h");
+        console.log(hSelector);
+        hSelector = $("#h");
+        console.log(hSelector);
+        //用標籤找
+        console.log("-------------------------");
+        hSelector = $("h1");
+        console.log(hSelector);
+
+
+        //內容
+        let hSelectorContent = hSelector.html();
+        console.log(hSelectorContent);
+
+        hSelectorContent = hSelector.text();
+        console.log(hSelectorContent);
+
+        hSelectorContent = $("#h").html();
+        console.log(hSelectorContent);
+    </script>
+    <h1 onclick="f1();"> method 1</h1>
+    <h1 id="h"> method 2</h1>
+    <h1 id="JQ"> method 2</h1>
+    <script>
+        //事件處理方法
+
+        function f1() {
+            alert("method 1")
+        }
+        //2. < h1 id = "h" > method 2</h1 >
+        //JS
+        document.querySelector("#h").onclick = f1;
+        document.querySelector("#h").onclick = function () {
+            alert("method 2");  //匿名函數
+        }
+        //3.
+        document.querySelector("#h").addEventListener("click", f2, false);
+        //document.querySelector("#h").attachEvent("click", f1);
+        function f2() {  //函數宣告
+            alert("method 1 2 3");
+        }  //jQuery沒有這種寫法
+
+        //JQ===============================
+
+        $("#h").click(f);
+        function f() {
+            alert("method");
+        }
+        $("#h").click(function () {  //匿名函數
+            alert("method");
+        });
+        $("#h").on("click", function () {...});
+    </script>
+
+</body>
+</html>
