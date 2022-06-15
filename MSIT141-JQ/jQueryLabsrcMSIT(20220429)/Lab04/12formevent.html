@@ -39,24 +39,30 @@
         //focus,blur
         $("#idInp").focus(function(){
             console.log("focus"); 
-            
+            $(this).css("background-color","pink")
             
         }).blur(function(){
             console.log("blur");
-            
+            $(this).css("background-color","yellow")
         })
 
         //change
         $("#idSel").change(function(){
             console.log("change");
             //讀取option的值
-            
+            let op=$("select>option:selected");
+            $("#demo").text(`op.index=${op.index()},op.val=${op.val()},op.text=${op.text()}`);
+                    // console.log(op)
                     
         });
         
         //submit
         $("#idbtn").click(function(){
-            console.log("submit");                                               
+            console.log("submit");  
+            if($("#idInp").val()=="")
+            $("#demo").text("快打字")
+            else
+            $("form").submit();                                             
 
         });
 

@@ -60,8 +60,23 @@
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script>
         $(".number").on("change keyup", function(){
-            
-            
+            console.log(this);
+            console.log($(this).val());
+            let Tr=$(this).closest("tr");
+            console.log(Tr);
+            let qty=$(this).val();
+            let price=Tr.find(".price").text();
+            let s_price=qty*price;
+            Tr.find(".s_price").text(s_price);
+
+            let total=0;
+     
+            $(".s_price").each(function(){
+                total+= Number($(this).text());
+                console.log(total);
+
+            })
+            $("#total").text(total);
         });
     </script>
 </body>

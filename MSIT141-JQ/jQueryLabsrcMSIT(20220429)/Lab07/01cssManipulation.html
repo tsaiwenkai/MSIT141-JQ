@@ -44,20 +44,28 @@
             //將.box的寬及高設為150px，
             //背景顏色設為粉紅
             //邊框圓角(border-radius)設為50%
-            
+            let style={
+                "width":"150px",
+                height:150,
+                "background-color":"pink",
+                borderRadius:"50%"
+            }
+            $(".box").css(style)
+            console.log($(".box").css("width"));
+            console.log($(".box").css.prop("style").width);
                             
         });
 
         
         $("#extend").click(function(){
             //將.box的大小，新增寬及高 10px
-            
+            $(".box").css("width","+=10px").css("height","+=10px")
             
         });
 
         $(".color").click(function(){
             //將所選背景顏色設定到.box的背景顏色
-            
+           let color= $(this).css("background-color")
         });            
     </script>
 </body>

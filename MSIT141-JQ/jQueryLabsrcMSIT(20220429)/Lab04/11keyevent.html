@@ -16,16 +16,23 @@
         //事件優先順序 keydown->keypress->keyup
             $("#idText").keydown(function(){
             console.log("keydown");
+            console.log(event.which);
+            console.log($(this).val())
         });
 
         $("#idText").keyup(function(){
             console.log("keyup"); 
+            console.log(event.which);
+            console.log($(this).val())
+$("#showName").text($(this).val());
             //輸入值在#showName顯示
             
         });                
 
         $("#idText").keypress(function(){
             console.log("keypress");
+            console.log(event.which);
+            console.log($(this).val())
         });               
     </script>
 </body>

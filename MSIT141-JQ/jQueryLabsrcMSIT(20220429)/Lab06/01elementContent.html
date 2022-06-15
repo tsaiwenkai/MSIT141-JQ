@@ -14,9 +14,9 @@
         <input class="btn btn-primary" type="button" id="btn5" value="val()">
         <input class="btn btn-primary" type="button" id="btn6" value="val(value)">
         
-        <div id="div1">this is first div
-            <div id="div2">this is second div</div>
-        </div>
+        <div id="div1" class="123">this is first div
+            <div id="div2" class="123">this is second div</div>
+        </div>      
         <input type="text" id="idText" value="hello"><br>      
         <hr>
 
@@ -39,7 +39,7 @@
         });
 
         $("#btn2").click(function(){                
-            $("#div1").text("<b>replace</b>");
+            $(".123").text("<b>replace</b>");
         });
 
         $("#btn3").click(function(){               
@@ -55,7 +55,8 @@
         });
 
         $("#btn6").click(function(){               
-            $("#idText").val("jQuery");  //所有input元素                             
+            //$("#idText").val("jQuery");  //所有input元素
+            $("input[type='text']").val("123");                   
         });
 
         //設定txtName中的值為guest

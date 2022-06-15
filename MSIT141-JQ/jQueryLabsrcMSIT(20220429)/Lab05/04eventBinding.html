@@ -43,7 +43,9 @@
 
 
             //練習使用on繫結網頁上刪除按鈕，完成刪除動作
-            
+            $("#idtable").on("click",".btn-danger",function(){
+                $(this).closest("tr").remove();
+            });
 
             $('#buttonAdd').click(function () {
                 $('table').append("<tr><td>X</td><td>Y</td><td>Z</td><td><a href='#' class='btn btn-danger'>刪除</a></td></tr>");                    

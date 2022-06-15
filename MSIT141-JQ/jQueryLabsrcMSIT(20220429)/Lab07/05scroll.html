@@ -32,6 +32,14 @@
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script>
 
+let docheight=$("body").height();
+let windowheight=$(window).height();
+
+$(window).scroll(function(){
+    let scrolltop=$(this).scrollTop();
+    let scrollpr=Math.round((scrolltop/(docheight-windowheight))*100)+"%"
+    $(".read_progress_bar").width(scrollpr);
+})
 
     </script>
  </body>

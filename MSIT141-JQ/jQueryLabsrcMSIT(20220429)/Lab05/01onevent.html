@@ -34,15 +34,16 @@
 
         //多個事件繫結多個事件處理程序
         $("#buttonMultiple").on({
-            click: function(){
-                console.log("click");
-            },
+            
             dblclick: function(){
                 console.log("Double Click");
             },
             mouseenter: function(){
                 console.log("Mouse Enter");
-            }
+            },
+            click: function(){
+                console.log("click");
+            },
         });               
     </script>
 </body>

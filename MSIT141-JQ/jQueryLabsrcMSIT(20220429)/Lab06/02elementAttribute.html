@@ -40,8 +40,8 @@
             //固有屬性和checked用removeAttr,自定屬性用removeProp
             
             //對於HTML元素本身就帶有的固有屬性使用attr()及prop()讀取和設定
-            // console.log($("#ida").attr("href"));      
-            // console.log($("#ida").prop("href"));      
+            console.log($("#ida").attr("href"));      
+            console.log($("#ida").prop("href"));      
             // console.log($("#ida").css("href")); 
             // $("#ida").attr("href","https://www.ispan.com.tw"); 
             // $("#ida").prop("href","https://www.ispan.com.tw"); 
@@ -79,8 +79,8 @@
         });              
 
         $("#btn2").click(function(){                            
-            // $("#ida").removeAttr("href");  
-            // $("#ida").removeProp("href");   
+            $("#ida").removeAttr("href");  
+            $("#ida").removeProp("href");   
             // $(":checked").removeAttr("checked");
             // $(":checked").removeProp("checked"); 
         });
@@ -92,10 +92,10 @@
             // console.log($("#ida").prop("customs"));
 
             // console.log("---------------");
-            // console.log($("#ida").prop("customs","123")
-            //             .removeProp("customs")
-            //             .prop("customs")
-            //             );                            
+            console.log($("#ida").prop("customs","123")
+                        .removeProp("customs")
+                        .prop("customs")
+                        );                            
         });                       
     </script>
 </body>

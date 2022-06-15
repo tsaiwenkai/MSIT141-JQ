@@ -11,15 +11,30 @@
         <li>Juice</li>
         <li>Tea</li>
     </ul>
+    <table>
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+        </tr>
+    </table>
     <p id="demo"></p>
     <hr>
     <input type="button" id="btn1" value="selector.each()">
 
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script>
+        // console.log($("td"));
+        // console.log($("td")[2]);
+        // console.log($("td").get(1));
+        
         $("#btn1").click(function(){                             
             $("li").each(function(index,element){
-                                                            
+                   console.log(index);
+                   console.log(element);
+                   console.log(this);
+                   console.log($(this).text());
+                   $("#demo").append(`<li>${$(this).text()}</li>`);                                         
             });                  
         });
     </script>
