@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="utf-8">
+    <title>05hover.html</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <img id="img1" class="i" src="image/star.gif" />
+    <img id="img1" class="i" src="image/star.gif" />
+    <img id="img1" class="i" src="image/star.gif" />
+    <img id="img1" class="i" src="image/star.gif" />
+    <img id="img1" class="i" src="image/star.gif" />
+
+ 
+    <script>
+        //let flag = true;
+        //$("img").hover(function () {
+        //    if(flag)
+        //    $(this).prop("src","images/chngstar.gif");
+        //}, function () {
+        //        $(this).prop("src", "images/star.gif");
+        //})
+        // $("img").click(function () {
+        //    flag = false
+        //    $(this).prop("src", "images/chngstar.gif");
+        // })
+
+        $("img").hover(function () {
+
+            $(this).attr("src", "image/chngstar.gif").prevAll().attr("src", "image/chngstar.gif")
+        }, function () {
+
+            $(this).attr("src", "image/star.gif").nextAll().attr("src", "image/star.gif")
+        });
+
+    </script>
+</body>
+
+</html>

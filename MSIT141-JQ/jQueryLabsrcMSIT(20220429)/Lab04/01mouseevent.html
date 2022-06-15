@@ -28,7 +28,8 @@
         });
         
         $("#dblclick").dblclick(function(){
-            console.log("double click")
+            console.log("double click");
+            console.log(event.type);
         });
         $("#contextmenu").contextmenu(function(){
             console.log("contextmenu");              
@@ -40,11 +41,13 @@
         $("#mouseUp").mouseup(function(){
             console.log("mouse up")
         });
-        $("#mouseEnter").mouseenter(function(){
-            console.log("mouse enter")
+        $("#mouseEnter").mouseenter(function (event){
+            console.log("mouse enter");
+            console.log(event.type);
         })
-        $("#mouseLeave").mouseleave(function(){
-            console.log("mouse leave")
+        $("#mouseLeave").mouseleave(function (event){
+            console.log("mouse leave");
+            console.log(event.type);
         });
 
         $("#hover").hover(function(){
