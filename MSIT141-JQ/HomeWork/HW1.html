@@ -4,19 +4,139 @@
 <head>
     <meta charset="utf-8">
     <title>05hover.html</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/fontawesome-free-6.1.1-web/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        
 </head>
+<style>
+    .wrapper {
+        position: relative;
+        width: 800px;
+        height: 300px;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        position: absolute;
+    }
+
+    li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    ul.slides {
+        width: 3200px;
+        left: 0px;
+        transition: all .5s;
+    }
+
+    ul.slides li {
+        width: 800px;
+        height: 300px;
+        overflow: hidden;
+        float: left;
+    }
+
+    ul.slides li img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .dot {
+        bottom: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .dot li {
+        border: 1px solid #fff;
+        /* border-radius: 50%; */
+        margin: 0 5px;
+        width: 24px;
+        height: 10px;
+    }
+
+    /*.dot li:hover{
+            background: #fff;
+        }*/
+    .slide_btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        bottom: 0;
+        width: 30px;
+        color: #fff;
+        position: absolute;
+        font-size: 24px;
+    }
+
+    #prevSlide {
+        left: 0;
+    }
+
+    #nextSlide {
+        right: 0;
+    }
+
+    .slide_btn i {
+        color: rgba(255, 255, 255, .6);
+        transition: .5s;
+    }
+
+    .slide_btn:hover i {
+        color: rgba(255, 255, 255, 1);
+    }
+</style>
 
 <body>
-    <img id="img1" class="i" src="image/star.gif" />
-    <img id="img1" class="i" src="image/star.gif" />
-    <img id="img1" class="i" src="image/star.gif" />
-    <img id="img1" class="i" src="image/star.gif" />
-    <img id="img1" class="i" src="image/star.gif" />
 
- 
+    <div id="star">
+        <h1 id="book1">第一題!!!!</h1>
+        <img id="img1" class="i" src="image/star.gif" />
+        <img id="img1" class="i" src="image/star.gif" />
+        <img id="img1" class="i" src="image/star.gif" />
+        <img id="img1" class="i" src="image/star.gif" />
+        <img id="img1" class="i" src="image/star.gif" />
+        <span id="showstar"></span>
+    </div>
+    <div>
+        <h1 id="book2">第二題!!!!!</h1>
+        <div class="wrapper">
+            <ul class="slides">
+                <li><img src="image/slide1.jpg" alt=""></li>
+                <li><img src="image/slide2.jpg" alt=""></li>
+                <li><img src="image/slide3.jpg" alt=""></li>
+                <li><img src="image/slide4.jpg" alt=""></li>
+            </ul>
+            <ul class="dot">
+                <li id="1"></li>
+                <li id="2"></li>
+                <li id="3"></li>
+                <li id="4"></li>
+            </ul>
+            <div id="prevSlide" class="slide_btn">
+                <i class="fa-solid fa-caret-left"></i>
+            </div>
+            <div id="nextSlide" class="slide_btn">
+                <i class="fa-solid fa-caret-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+
     <script>
-        //let flag = true;
+        let flag = true;
         //$("img").hover(function () {
         //    if(flag)
         //    $(this).prop("src","images/chngstar.gif");
@@ -28,12 +148,82 @@
         //    $(this).prop("src", "images/chngstar.gif");
         // })
 
-        $("img").hover(function () {
+        $(".i").on({
+            mouseenter: function () {
+                if (flag) {
+                    $(this).attr("src", "image/chngstar.gif").prevAll().attr("src", "image/chngstar.gif")
+                    $("#showstar").text(`正在評分給...${$(this).index()}顆星!!`)
+                }
+            }, mouseout: function () {
+                if (flag)
+                    $(this).attr("src", "image/star.gif").nextAll().attr("src", "image/star.gif")
+            }, click: function () {
+                flag = false;
+                console.log($(this).index())
+                $("#showstar").text(`您給了${$(this).index()}顆星!!`)
 
-            $(this).attr("src", "image/chngstar.gif").prevAll().attr("src", "image/chngstar.gif")
+                // $("#showstar").
+            }
+        });
+    </script>
+
+    <script>
+        let slideNum = 0;
+        let slideCount = $(".slides li").length;
+        let lastIndex = slideCount - 1;
+        let time = setInterval(function () {
+            slideNum++;
+            if (slideNum > lastIndex) slideNum = 0;
+            move();
+        }, 2000);
+
+
+        /*console.log(slideCount);*/
+        $(".dot li").eq(0).css("background-color", "#fff")
+        $(".dot li").mouseenter(function () {
+
+            slideNum = $(this).index();
+
+            //$(this).css("background-color", "#fff").siblings().css("background-color", "transparent")
+            //上面用的this就等於$(".dot li")的第eq(sln)個!!!!
+            //let sln = $(this).index();
+            //$(".dot li").eq(sln).css("background-color", "#fff").siblings().css("background-color", "transparent")
+            //let slnmove = 0 - 800 * sln;
+            //$("ul.slides").css("left", slnmove)
+
+            //以下包裝方法
+            move();
+        });
+
+
+        $(".slides li").hover(function () {
+            clearInterval(time);
         }, function () {
+            time = setInterval(function () {
+                slideNum++;
+                if (slideNum > lastIndex) slideNum = 0;
+                move();
+            }, 2000);
+        })
 
-            $(this).attr("src", "image/star.gif").nextAll().attr("src", "image/star.gif")
+        function move() {
+            $(".dot li").eq(slideNum).css("background-color", "#fff").siblings().css("background-color", "transparent")
+            let slnmove = 0 - 800 * slideNum;
+            $("ul.slides").css("left", slnmove)
+        };
+        $("#prevSlide").click(function () {
+            slideNum--;
+            //把索引--
+            //如果索引是-值的話就把索引直放到最後一個
+            if (slideNum < 0) slideNum = lastIndex;
+            move();
+        });
+        $("#nextSlide").click(function () {
+            slideNum++;
+            //把索引--
+            //如果索引是-值的話就把索引直放到最後一個
+            if (slideNum > lastIndex) slideNum = 0;
+            move();
         });
 
     </script>
